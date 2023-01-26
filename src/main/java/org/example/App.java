@@ -18,13 +18,13 @@ public class App
 {
     public static void main( String[] args )
     {
-        String uri = "mongodb+srv://carpui:DlIR@Cluster-AD-CARLOS.619nifa.mongodb.net/?retryWrites=true&w=majority";
+        String uri = "mongodb://carlos:qwerty@ec2-52-90-109-81.compute-1.amazonaws.com:27017/pelis";
 
         // Paso 1: Query a base de datos
         // Por defecto, intentará conectar al puerto 27017
         try (MongoClient mongoClient = MongoClients.create(uri)) {
             // Seleccionamos la base de datos para trabajar
-            MongoDatabase database = mongoClient.getDatabase("sample_mflix");
+            MongoDatabase database = mongoClient.getDatabase("pelis");
             // Recogemos la colección "movies" en una colección de documentos de MongoDB
             MongoCollection<Document> collection = database.getCollection("movies");
             System.out.println("La colección movies tiene " + collection.countDocuments() + " documentos");
@@ -41,7 +41,7 @@ public class App
         CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
 
         try (MongoClient mongoClient = MongoClients.create(uri)) {
-            MongoDatabase database = mongoClient.getDatabase("sample_mflix").withCodecRegistry(pojoCodecRegistry);
+            MongoDatabase database = mongoClient.getDatabase("pelis").withCodecRegistry(pojoCodecRegistry);
             MongoCollection<Movie> collection = database.getCollection("movies", Movie.class);
             Movie movie = collection.find(eq("title", "Back to the Future")).first();
             System.out.println(movie);
