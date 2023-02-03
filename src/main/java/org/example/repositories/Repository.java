@@ -1,12 +1,15 @@
 package org.example.repositories;
 
+import com.mongodb.client.FindIterable;
+import org.bson.types.ObjectId;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface Repository<T> {
-    List<T> findAll();
-    Optional<T> findOneById(int id);
+    FindIterable<T> findAll();
+    T findOneById(ObjectId id);
     T save(T t);
-    Optional<T> updateById(int id);
-    Optional<T> deleteById(int id);
+    T updateById(ObjectId id, T t);
+    void deleteById(ObjectId id);
 }

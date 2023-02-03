@@ -1,56 +1,48 @@
 package org.example.repositories;
 
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.types.ObjectId;
 import org.example.entities.Alumno;
 
 import java.util.List;
 import java.util.Optional;
 
-public class AlumnoRepository implements Repository<Alumno>{
-    private SessionFactory sf = HibernateUtil.getSessionFactory();
-    private Session s = sf.openSession();
-    @Override
-    public List<Alumno> findAll() {
-        s.getTransaction().begin();
-        List<Alumno> alumno = s.createSelectionQuery("from Alumno ", Alumno.class).list();
-        s.getTransaction().commit();
-        return alumno;
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
+
+public class AlumnoRepository implements Repository<Alumno> {
+    private MongoCollection<Alumno> collection;
+
+    public AlumnoRepository(MongoDatabase database) {
+        collection = database.getCollection("alumnos", Alumno.class);
     }
 
     @Override
-    public Optional<Alumno> findOneById(int id) {
-        s.getTransaction().begin();
-        Alumno alumno = s.get(Alumno.class, id);
-        s.getTransaction().commit();
-        return Optional.ofNullable(alumno);
+    public FindIterable<Alumno> findAll() {
+        return collection.find();
+    }
+
+    @Override
+    public Alumno findOneById(ObjectId id) {
+        return collection.find(eq("_id", id)).first();
     }
 
     @Override
     public Alumno save(Alumno alumno) {
-        s.getTransaction().begin();
-        s.persist(alumno);
-        s.getTransaction().commit();
+        collection.insertOne(alumno);
         return alumno;
     }
 
     @Override
-    public Optional<Alumno> updateById(int id) {
-        s.getTransaction().begin();
-        Alumno alumno = s.get(Alumno.class, id);
-        s.merge(alumno);
-        s.getTransaction().commit();
-        return Optional.ofNullable(alumno);
+    public Alumno updateById(ObjectId id, Alumno alumno) {
+        collection.replaceOne(eq("_id", id), alumno);
+        return alumno;
     }
 
     @Override
-    public Optional<Alumno> deleteById(int id) {
-        s.getTransaction().begin();
-        Alumno alumno = s.get(Alumno.class, id);
-        s.remove(alumno);
-        s.getTransaction().commit();
-        return Optional.ofNullable(alumno);
-    }
-    public void close() {
-        s.close();
-        sf.close();
+    public void deleteById(ObjectId id) {
+        collection.deleteOne(eq("_id", id));
     }
 }

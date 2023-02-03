@@ -23,28 +23,8 @@ public class App
         // Paso 1: Query a base de datos
         // Por defecto, intentará conectar al puerto 27017
         try (MongoClient mongoClient = MongoClients.create(uri)) {
-            // Seleccionamos la base de datos para trabajar
             MongoDatabase database = mongoClient.getDatabase("pelis");
-            // Recogemos la colección "movies" en una colección de documentos de MongoDB
             MongoCollection<Document> collection = database.getCollection("movies");
-            System.out.println("La colección movies tiene " + collection.countDocuments() + " documentos");
-            Document doc = collection.find(eq("title", "Back to the Future")).first();
-            if (doc != null) {
-                System.out.println(doc.toJson());
-            } else {
-                System.out.println("No matching documents found.");
-            }
-        }
-
-        // Paso 2: Uso de CodecRegistry para mapear clases POJO a Documentos
-        CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
-        CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
-
-        try (MongoClient mongoClient = MongoClients.create(uri)) {
-            MongoDatabase database = mongoClient.getDatabase("pelis").withCodecRegistry(pojoCodecRegistry);
-            MongoCollection<Movie> collection = database.getCollection("movies", Movie.class);
-            Movie movie = collection.find(eq("title", "Back to the Future")).first();
-            System.out.println(movie);
         }
     }
 }

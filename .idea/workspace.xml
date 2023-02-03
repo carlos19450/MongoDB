@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f3776c98-d0f3-48b5-9c53-1e240ff51be4" name="Changes" comment="Creacion">
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Alumno.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Direccion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Modulo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Profesor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/AlumnoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/DireccionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/ModuloRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/ProfesorRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Alumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/AlumnoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/AlumnoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/ModuloRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/ModuloRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/ProfesorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/ProfesorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/Repository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +70,7 @@
       <updated>1674488368544</updated>
       <workItem from="1674488369677" duration="6198000" />
       <workItem from="1674743211413" duration="3358000" />
+      <workItem from="1675447609471" duration="2364000" />
     </task>
     <task id="LOCAL-00001" summary="Creacion">
       <created>1674497205770</created>
