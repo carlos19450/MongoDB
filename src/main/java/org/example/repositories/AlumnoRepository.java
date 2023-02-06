@@ -45,4 +45,8 @@ public class AlumnoRepository implements Repository<Alumno> {
     public void deleteById(ObjectId id) {
         collection.deleteOne(eq("_id", id));
     }
+
+    public FindIterable<Alumno> findAllPendientes() {
+        return collection.find(and(eq()));
+    }
 }

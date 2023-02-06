@@ -7,11 +7,10 @@
     <list default="true" id="f3776c98-d0f3-48b5-9c53-1e240ff51be4" name="Changes" comment="Creacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Alumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Direccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Direccion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Modulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Modulo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Profesor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/AlumnoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/AlumnoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/ModuloRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/ModuloRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/ProfesorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/ProfesorRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repositories/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repositories/Repository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -8,7 +8,11 @@ import org.bson.Document;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
-import org.example.entities.Movie;
+import org.bson.types.ObjectId;
+import org.example.entities.*;
+import org.example.repositories.AlumnoRepository;
+import org.example.repositories.ModuloRepository;
+import org.example.repositories.ProfesorRepository;
 
 import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static com.mongodb.client.model.Filters.eq;
@@ -18,13 +22,51 @@ public class App
 {
     public static void main( String[] args )
     {
-        String uri = "mongodb://carlos:qwerty@ec2-52-90-109-81.compute-1.amazonaws.com:27017/pelis";
+        Alumno al1 = new Alumno("Pepe", "Ramon", "Floco", 65748347, 123456789);
+        al1.setId(new ObjectId());
+        Alumno al2 = new Alumno("Romo", "Grano", "Tran", 58745634, 987654321);
+        al2.setId(new ObjectId());
+        Alumno al3 = new Alumno("Paco", "Rodri", "Pleno", 56349053, 245801114);
+        al3.setId(new ObjectId());
+        //Crear direccion
+        Direccion d1 = new Direccion("Pepon", 2, "Castellon", "Castellon");
+        d1.setId(new ObjectId());
+        //Crear profesor
+        Profesor p1 = new Profesor("Paco", "Perez", "Cacho", 675648321, d1);
+        p1.setId(new ObjectId());
+        Profesor p2 = new Profesor("Ramon", "Romo", "Rama", 675648321, new Direccion("Ploton", 24, "Castellon", "Castellon"));
+        p2.setId(new ObjectId());
+        //Crear modulos
+        Modulo m1 = new Modulo("Matematicas", "4", 16, p1);
+        m1.setId(new ObjectId());
+        Modulo m2 = new Modulo("Ingles", "2", 8, p1);
+        m2.setId(new ObjectId());
+        Modulo m3 = new Modulo("Programacion", "3", 9, p2);
+        m3.setId(new ObjectId());
 
-        // Paso 1: Query a base de datos
-        // Por defecto, intentará conectar al puerto 27017
+        String uri = "mongodb://ec2-52-90-109-81.compute-1.amazonaws.com:27017";
+
+        CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
+        CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
+
         try (MongoClient mongoClient = MongoClients.create(uri)) {
-            MongoDatabase database = mongoClient.getDatabase("pelis");
-            MongoCollection<Document> collection = database.getCollection("movies");
+            MongoDatabase database = mongoClient.getDatabase("instituto").withCodecRegistry(pojoCodecRegistry);
+            AlumnoRepository alumnos = new AlumnoRepository(database);
+            ModuloRepository modulos = new ModuloRepository(database);
+            ProfesorRepository profesors = new ProfesorRepository(database);
+
+            modulos.save(m1);
+            modulos.save(m2);
+            modulos.save(m3);
+
+            modulos.findAll().forEach(System.out::println);
+
+            alumnos.save(al1);
+            alumnos.save(al2);
+            alumnos.save(al3);
+
+            System.out.println();
+            alumnos.findAll().forEach(System.out::println);
         }
     }
 }
