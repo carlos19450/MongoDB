@@ -22,6 +22,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        //Crear alumno
         Alumno al1 = new Alumno("Pepe", "Ramon", "Floco", 65748347, 123456789);
         al1.setId(new ObjectId());
         Alumno al2 = new Alumno("Romo", "Grano", "Tran", 58745634, 987654321);
@@ -55,18 +56,32 @@ public class App
             ModuloRepository modulos = new ModuloRepository(database);
             ProfesorRepository profesors = new ProfesorRepository(database);
 
+            //Guardar modulos
             modulos.save(m1);
             modulos.save(m2);
             modulos.save(m3);
 
+            System.out.println();
+
+            //Mostrar todos los modulos
             modulos.findAll().forEach(System.out::println);
 
+            modulos.findAll().forEach(System.out::println);
+            //Guardar alumnos
             alumnos.save(al1);
             alumnos.save(al2);
             alumnos.save(al3);
 
-            System.out.println();
+            //Mostrar todos los alumnos
             alumnos.findAll().forEach(System.out::println);
+
+            System.out.println();
+
+            //Actualizar modulo
+            m1.setHorasSemanales(6);
+            modulos.updateById(m1);
+            System.out.println(modulos.findOneById(m1.getId()));
+
         }
     }
 }

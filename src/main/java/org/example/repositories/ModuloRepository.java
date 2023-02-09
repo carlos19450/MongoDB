@@ -35,8 +35,8 @@ public class ModuloRepository implements Repository<Modulo> {
     }
 
     @Override
-    public Modulo updateById(ObjectId id, Modulo modulo) {
-        collection.replaceOne(eq("_id", id), modulo);
+    public Modulo updateById(Modulo modulo) {
+        collection.replaceOne(eq("_id", modulo.getId()), modulo);
         return modulo;
     }
 
@@ -44,4 +44,5 @@ public class ModuloRepository implements Repository<Modulo> {
     public void deleteById(ObjectId id) {
         collection.deleteOne(eq("_id", id));
     }
+
 }
